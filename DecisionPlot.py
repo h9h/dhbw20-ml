@@ -4,11 +4,10 @@
 import numpy as np
 from matplotlib import pyplot as plt
 from matplotlib import ticker, cm
-from mpl_toolkits import mplot3d
 
 from matplotlib.colors import ListedColormap
 
-def plot_decision_surface(X, y, predictor, ax_delta=1.0, mesh_res = 0.01, alpha=0.4, bscatter=1,  
+def plot_decision_surface(X, y, predictor, ax_delta=1.0, mesh_res = 0.01, alpha=0.4, bscatter=True,  
                           x1_label='x1', x2_label='x2', legend_loc='upper right'):
 
     # some arrays and colormap
@@ -32,7 +31,7 @@ def plot_decision_surface(X, y, predictor, ax_delta=1.0, mesh_res = 0.01, alpha=
     plt.contourf(xm1, xm2, Z, alpha=alpha, cmap=cmap)
 
     # add a scatter plot of the data points 
-    if (bscatter == 1): 
+    if (bscatter): 
         alpha2 = alpha + 0.4 
         if (alpha2 > 1.0 ):
             alpha2 = 1.0
@@ -44,5 +43,5 @@ def plot_decision_surface(X, y, predictor, ax_delta=1.0, mesh_res = 0.01, alpha=
     plt.ylim(x2_min, x2_max)
     plt.xlabel(x1_label)
     plt.ylabel(x2_label)
-    if (bscatter == 1):
+    if (bscatter):
         plt.legend(loc=legend_loc)

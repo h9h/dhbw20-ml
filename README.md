@@ -11,3 +11,16 @@ First you have to select in `docker-compose.yml` whether you want to use Traefik
 ```bash
 docker-compose up -d
 ```
+
+If you need to get a token to log into the web-interface run
+
+```
+docker logs <container_id>
+```
+
+(find the container_id by `docker ps -a`)
+
+To stop:
+```
+docker-compose down
+```
