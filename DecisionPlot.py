@@ -28,7 +28,8 @@ def plot_decision_surface(X, y, predictor, ax_delta=1.0, mesh_res = 0.01, alpha=
     Z = Z.reshape(xm1.shape)
 
     # plot contur areas 
-    plt.contourf(xm1, xm2, Z, alpha=alpha, cmap=cmap)
+    fig, ax = plt.subplots(1, figsize=(10,10))
+    ax.contourf(xm1, xm2, Z, alpha=alpha, cmap=cmap)
 
     # add a scatter plot of the data points 
     if (bscatter): 
@@ -36,12 +37,12 @@ def plot_decision_surface(X, y, predictor, ax_delta=1.0, mesh_res = 0.01, alpha=
         if (alpha2 > 1.0 ):
             alpha2 = 1.0
         for idx, yv in enumerate(np.unique(y)): 
-            plt.scatter(x=X[y==yv, 0], y=X[y==yv, 1], 
+            ax.scatter(x=X[y==yv, 0], y=X[y==yv, 1], 
                         alpha=alpha2, c=[cmap(idx)], marker=markers[idx], label=yv)
             
-    plt.xlim(x1_min, x1_max)
-    plt.ylim(x2_min, x2_max)
-    plt.xlabel(x1_label)
-    plt.ylabel(x2_label)
+    ax.set_xlim(x1_min, x1_max)
+    ax.set_ylim(x2_min, x2_max)
+    ax.set_xlabel(x1_label)
+    ax.set_ylabel(x2_label)
     if (bscatter):
-        plt.legend(loc=legend_loc)
+        ax.legend(loc=legend_loc)

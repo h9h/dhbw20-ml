@@ -1,26 +1,27 @@
-# dhbw20-ml
+# Vorlesung Machine Learning an der DHBW 2020
 
-Vorlesung Machine Learning an der DHBW 2020
-
-Bitte vor jeder Vorlesung pullen, ist ein "Work in progress" ;-)
+Bitte dieses Repository vor jeder Vorlesung pullen, ist ein "Work in progress" ;-)
 
 ## Launch in Docker
 
-First you have to select in `docker-compose.yml` whether you want to use Traefik or port forwarding.
+### Starten
 
 ```bash
 docker-compose up -d
 ```
 
-If you need to get a token to log into the web-interface run
+Dauert beim ersten Starten länger, da die Images geladen werden müssen.
+
+Die Notebooks stehen dann unter localhost:8888 zur Verfügung.
+
+Falls die Webseite ein Token verlangt, findet ihr das in den Logausgaben:
 
 ```
-docker logs <container_id>
+docker-compose logs
 ```
 
-(find the container_id by `docker ps -a`)
+### Stoppen
 
-To stop:
 ```
 docker-compose down
 ```

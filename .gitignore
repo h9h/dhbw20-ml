@@ -12,3 +12,6 @@ __pycache__
 
 # Log-Files
 logs
+
+# Scrap Files
+_*

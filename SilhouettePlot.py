@@ -63,7 +63,7 @@ def PlotSilhouette(X, clusterer, n_clusters):
 
     # The vertical line for average silhouette score of all the values
     ax1.axvline(x=silhouette_avg, color="red", linestyle="--")
-
+    ax1.text(silhouette_avg + 0.1, 0.1, str(silhouette_avg))
     ax1.set_yticks([])  # Clear the yaxis labels / ticks
     ax1.set_xticks([-0.1, 0, 0.2, 0.4, 0.6, 0.8, 1])
 

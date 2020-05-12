@@ -4,11 +4,11 @@ services:
   jupyter:
     build:
       context: .
-    image: datascience-notebook-dhb20-ml
+    image: datascience-notebook-dhbw20-ml
     container_name: dhbw-heinke-ml-jupyter
     restart: unless-stopped
     volumes:
-      - ./:/home/jovyan/dhbw20-ml
+      - ./:/home/jovyan/dhbw20
     ports:
       - 8888:8888
 # Uncomment the following lines to use Traefik as reverse proxy.
