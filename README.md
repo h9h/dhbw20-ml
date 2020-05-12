@@ -25,3 +25,10 @@ docker-compose logs
 ```
 docker-compose down
 ```
+
+### Ist der Port belegt?
+
+```
+netstat -ano | findstr 8888
+taskkill /PID <PIDh> /F
+```
