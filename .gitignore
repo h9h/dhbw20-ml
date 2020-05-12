@@ -1,3 +1,11 @@
-.ipynb_checkpoints
+# IntelliJ
 .idea
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# Python
 __pycache__
+
+# Local env vars for Docker-Compose
+.env

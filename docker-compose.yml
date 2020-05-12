@@ -1,0 +1,31 @@
+version: '3.7'
+
+services:
+  jupyter:
+    build:
+      context: .
+    image: datascience-notebook-dhb20-ml
+    container_name: dhbw-heinke-ml-jupyter
+    restart: unless-stopped
+    volumes:
+      - ./:/home/jovyan/dhbw20-ml
+    ports:
+      - 8888:8888
+# Uncomment the following lines to use Traefik as reverse proxy.
+
+#     networks:
+#       - traefik
+#       - default
+#     labels:
+#       - "traefik.enable=true"
+#       - "traefik.http.routers.dhbw-heinke-ml-jupyter.rule=Host(`$TRAEFIK_HOST`)"
+#       - "traefik.docker.network=traefik_default"
+
+#       - "traefik.http.routers.dhbw-heinke-ml-jupyter.tls=true"
+#       - "traefik.http.routers.dhbw-heinke-ml-jupyter.tls.certresolver=le"
+#       - "traefik.http.routers.dhbw-heinke-ml-jupyter.tls.domains[0].main=$TRAEFIK_LE_CERT_DOMAIN"
+
+# networks:
+#   traefik:
+#     external:
+#       name: traefik_default
