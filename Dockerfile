@@ -7,4 +7,5 @@ RUN pip install \
     ipywidgets \
     tensorflow \
     kneed \
-    pillow
+    pillow \
+    ipympl
