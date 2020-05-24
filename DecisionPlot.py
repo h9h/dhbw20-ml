@@ -20,21 +20,18 @@ def plot_decision_surface(X, y, predictor, ax_delta=1.0, alpha=0.4, bscatter=Tru
     if not ax:
         fig, ax = plt.subplots(1, figsize=(10,10))
 
-    xlim = ax.get_xlim()
-    ylim = ax.get_ylim()
-
-    # create grid to evaluate model
-    xx = np.linspace(xlim[0], xlim[1], 30)
-    yy = np.linspace(ylim[0], ylim[1], 30)
-    XX, YY = np.meshgrid(xx, yy)
-    mesh_points = np.vstack([XX.ravel(), YY.ravel()]).T
-
+    x1_min, x1_max = X[:, 0].min()  - 1, X[:, 0].max() + 1
+    x2_min, x2_max = X[:, 1].min()  - 1, X[:, 1].max() + 1
+    xm1, xm2 = np.meshgrid( np.arange(x1_min, x1_max, 0.01),
+                            np.arange(x2_min, x2_max, 0.01))
+    mesh_points = np.array([xm1.ravel(), xm2.ravel()]).T
+    
     # predicted vals 
     Z = predictor.predict(mesh_points)
-    Z = Z.reshape(XX.shape)
+    Z = Z.reshape(xm1.shape)
 
     # plot contour areas 
-    ax.contourf(XX, YY, Z, alpha=alpha, cmap=plt.cm.Paired)
+    ax.contourf(xm1, xm2, Z, alpha=alpha, cmap=plt.cm.Paired)
 
     # add a scatter plot of the data points 
     if (bscatter): 

@@ -10,19 +10,17 @@ def plot_hyperplane_margin(X, y, model, ax=None):
 
     ax.scatter(X[:, 0], X[:, 1], c=y, s=30, cmap=plt.cm.Paired)
 
-    xlim = ax.get_xlim()
-    ylim = ax.get_ylim()
-
     # create grid to evaluate model
-    xx = np.linspace(xlim[0], xlim[1], 100)
-    yy = np.linspace(ylim[0], ylim[1], 100)
-    YY, XX = np.meshgrid(yy, xx)
-    xy = np.vstack([XX.ravel(), YY.ravel()]).T
-
-    Z = model.decision_function(xy).reshape(XX.shape)
+    x1_min, x1_max = X[:, 0].min()  - 1, X[:, 0].max() + 1
+    x2_min, x2_max = X[:, 1].min()  - 1, X[:, 1].max() + 1
+    xm1, xm2 = np.meshgrid( np.arange(x1_min, x1_max, 0.01),
+                            np.arange(x2_min, x2_max, 0.01))
+    mesh_points = np.array([xm1.ravel(), xm2.ravel()]).T
+    
+    Z = model.decision_function(mesh_points).reshape(xm1.shape)
 
     # plot decision boundary and margins
-    ax.contour(XX, YY, Z, colors='k', levels=[-1, 0, 1], alpha=0.5, linestyles=['--', '-', '--'])
+    ax.contour(xm1, xm2, Z, colors='k', levels=[-1, 0, 1], alpha=0.5, linestyles=['--', '-', '--'])
 
     # plot support vectors
     ax.scatter(model.support_vectors_[:, 0], model.support_vectors_[:, 1], s=100, linewidth=1, facecolors='none', edgecolors='k')
