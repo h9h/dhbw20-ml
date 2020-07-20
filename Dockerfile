@@ -6,6 +6,7 @@ RUN pip install \
     seaborn \
     ipywidgets \
     tensorflow \
+    tensorflow-datasets \
     kneed \
     pillow \
     ipympl
