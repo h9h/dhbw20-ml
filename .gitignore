@@ -15,3 +15,6 @@ logs
 
 # Scrap Files
 _*
+
+#Win: ini-files
+*.ini

@@ -9,4 +9,5 @@ RUN pip install \
     tensorflow-datasets \
     kneed \
     pillow \
-    ipympl
+    ipympl \
+    ipycanvas
